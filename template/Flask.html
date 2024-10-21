@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie123</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+    background-color: #111;
+    background-image: url('static/img/BackGround.jpg');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    animation: scrollBackground 60s linear infinite;
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+        form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: linear-gradient(to bottom, #f8f9fa, #cfd8dc);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+select {
+    padding: 10px;
+    margin: 10px;
+    width: calc(50% - 20px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    margin: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #e50914;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #b2070e;
+}
+
+        .card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 15px 15px ;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+.card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+
+
+
+
+
+
+</style>
+
+    </style>
+</head>
+<body>
+
+    <div class="container1">
+    <form action="/" method="POST">
+
+
+            <select name="genre1" id="genre1">
+
+                <option value="" disabled selected>Select Genre </option>
+                <option value="1">Sci-Fi</option>
+                <option value="2">Action</option>
+                <option value="3">Romance</option>
+                <option value="4">Comedy</option>
+                <option value="5">Horror</option>
+            </select>
+
+            <select name="genre2" id="genre2">
+
+                <option value="" disabled selected>Select Genre </option>
+                <option value="1">Sci-Fi</option>
+                <option value="2">Action</option>
+                <option value="3">Romance</option>
+                <option value="4">Comedy</option>
+                <option value="5">Horror</option>
+            </select>
+
+
+
+
+
+                <input type="submit" name="submit" value="SUBMIT"><p>
+
+
+        </form>
+
+
+
+        {% for i in result %}
+    {% if loop.index0 / 3 == 0 %}
+        {% if loop.index0 == 0 %}
+            <div class="carousel-item active">
+        {% else %}
+            <div class="carousel-item">
+        {% endif %}
+            <div class="container">
+                <div class="row">
+    {% endif %}
+
+                    <div class="col-lg-4">
+                        <div class="card card cbor">
+                            <img style="width : 400px; height : 400px;" src="{{ url_for('static',filename='img/'+ i)}}" class="card-img-top">
+                            <div class="card-body">
+                            </div>
+                        </div>
+                    </div>
+    {% if (loop.index0 + 1) / 3 == 0 or loop.last %}
+                </div>
+            </div>
+        </div>
+            </div>
+    {% endif %}
+{% endfor %}
+
+
+        </div>
+            </body>
+</html>
